@@ -305,12 +305,11 @@ fetch(
 
         root.appendChild(dom(Loading, null));
         loadingProgress_elmnt = querySelector(".loading__progress");
+        root.removeChild(querySelector(".loading"));
 
         downloadTheFiles("cover", songs).then(respone => {
             downloadTheFiles("song", respone).then(data => {
-                root.removeChild(querySelector(".loading"));
                 root.appendChild(dom(App, { songs: data }));
-
                 songsLength = data.length - 1;
                 progress_elmnt = querySelector(".progress");
                 playlistSongs_elmnt = querySelectorAll("audio");
